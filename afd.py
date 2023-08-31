@@ -4,7 +4,7 @@ class Estado():
         self.transicoes = transicoes
 
 class Transicao():
-    def __init__(self, char, proximo, mensagem=None):
+    def __init__(self, char, proximo, mensagem):
         self.char = char
         self.proximo = proximo
         self.mensagem = mensagem
