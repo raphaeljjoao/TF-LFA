@@ -8,6 +8,8 @@ SELECAO_COMIDAS = 'Seleção de comidas.'
 PAGAMENTO = 'Escolha do método de pagamento.'
 APROVADO = 'Pagamento aprovado.'
 RECUSADO = 'Pagamento recusado.'
+INDETERMINACAO = 'Transição não encontrada. Parada por indeterminação.\n'
+ESTADO_NAO_FINAL = 'Palavra terminou em um estado não final. Palavra rejeitada.'
 
 def mensagem_carrinho(item):
     return f'Adiciona {item} ao carrinho.'
@@ -147,7 +149,7 @@ def processa_entrada_interativa():
             estado_atual = int(transicao.proximo.replace('q', ''))
             print(transicao.mensagem, '\n')
         else:
-            print('Transição não encontrada. Parada por indeterminação.\n')
+            print(INDETERMINACAO)
             break
         
         if estado_atual == ESTADO_FINAL:
@@ -156,7 +158,7 @@ def processa_entrada_interativa():
     if estado_atual == ESTADO_FINAL:
         print(f'Palavra {palavra} reconhecida.')
     else:
-        print('Palavra terminou em um estado não final. Palavra rejeitada.')
+        print(ESTADO_NAO_FINAL)
 
 def processa_entrada_inteira(entrada):
 
@@ -177,14 +179,14 @@ def processa_entrada_inteira(entrada):
             print(transicao.mensagem, '\n')
         else:
             print(char)
-            print('Transição não encontrada. Parada por indeterminação.\n')
+            print(INDETERMINACAO)
             break
 
     time.sleep(650 / 1000)
     if estado_atual == ESTADO_FINAL:
         print(f'Palavra {palavra} reconhecida.')
     else:
-        print('Palavra terminou em um estado não final. Palavra rejeitada.')
+        print(ESTADO_NAO_FINAL)
 
 def palavra_csv(nome):
     with open(f'{nome}.csv', 'r') as file:
